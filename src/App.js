@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css";
 
 import faker from "faker";
@@ -38,12 +38,37 @@ const data = [...Array(50)].map((item) => ({
 }));
 
 export default function App() {
+  const [sortBy, setSortBy] = useState("");
+
   return (
     <>
+      <div>
+        <fieldset>
+          <label>
+            <input
+              type="radio"
+              name="sort"
+              checked={sortBy === "lowToHigh"}
+              onChange={() => setSortBy("lowToHigh")}
+            />
+            Low to High
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="sort"
+              checked={sortBy === "highToLow"}
+              onChange={() => setSortBy("highToLow")}
+            />
+            High to low
+          </label>
+        </fieldset>
+      </div>
       <div
         className="App"
         style={{
           display: "grid",
+          gap: "1rem",
           gridTemplateColumns: "repeat(auto-fill, minmax(15rem, 1fr))"
         }}
       >
@@ -63,8 +88,7 @@ export default function App() {
               style={{
                 border: "1px solid #4B5563",
                 borderRadius: "0 0 0.5rem 0.5rem",
-                margin: "1rem",
-                padding: "0 0 1rem"
+                padding: "0.25rem"
               }}
             >
               <img src={image} width="100%" height="auto" alt={productName} />

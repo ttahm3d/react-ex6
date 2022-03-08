@@ -43,12 +43,20 @@ const productsReducer = (state, action) => {
     case "SORT_LOW_TO_HIGH":
       return {
         ...state,
-        sortBy: action.payload
+        sortBy: action.payload,
+        products: data.sort(
+          (productA, productB) =>
+            Number(productA.price) - Number(productB.price)
+        )
       };
     case "SORT_HIGH_TO_LOW":
       return {
         ...state,
-        sortBy: action.payload
+        sortBy: action.payload,
+        products: data.sort(
+          (productA, productB) =>
+            Number(productB.price) - Number(productA.price)
+        )
       };
     default:
       return state;

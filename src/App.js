@@ -13,6 +13,9 @@ export default function App() {
   return (
     <>
       <div>
+        <button onClick={() => dispatch({ type: "RESET_FILTERS" })}>
+          RESET
+        </button>
         <fieldset>
           <label>
             <input

@@ -58,6 +58,12 @@ const productsReducer = (state, action) => {
             Number(productB.price) - Number(productA.price)
         )
       };
+    case "RESET_FILTERS":
+      return {
+        ...state,
+        sortBy: "",
+        products: data
+      };
     default:
       return state;
   }
